@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import entryIcon from "./../assets/next.svg";
 import closeIcon from "./../assets/close.svg";
-defineProps<{ variant: string; disabled?: boolean }>();
+defineProps<{ variant: string; disabled?: boolean; icon: string }>();
 
 const buttonClass = (disabled: boolean | undefined) => {
   if (disabled) {
     return "disabledButton ";
   }
 
-  return "button";
+  return "activeButton";
 };
 </script>
 
@@ -18,19 +18,40 @@ const buttonClass = (disabled: boolean | undefined) => {
     :class="[buttonClass(disabled), 'basicButton']"
   >
     <img
+      v-if="icon === 'next'"
       height="32"
       width="32"
       :src="entryIcon"
       alt="entry button"
+    />
+    <img
+      v-else-if="icon === 'close'"
+      height="16"
+      width="16"
+      :src="closeIcon"
+      alt="close button"
     /><slot></slot>
   </button>
-  <button v-else :class="[buttonClass(disabled), 'closeButton']">
-    <img height="16" width="16" :src="closeIcon" alt="close button" />
+  <button v-else :class="[buttonClass(disabled), 'roundedButton']">
+    <img
+      v-if="icon === 'next'"
+      height="32"
+      width="32"
+      :src="entryIcon"
+      alt="entry button"
+    />
+    <img
+      v-else-if="icon === 'close'"
+      height="16"
+      width="16"
+      :src="closeIcon"
+      alt="close button"
+    />
   </button>
 </template>
 
 <style scoped>
-.button {
+.activeButton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,19 +64,21 @@ const buttonClass = (disabled: boolean | undefined) => {
 }
 
 .basicButton {
-  padding: 12px 24px;
+  min-height: 56px;
+  padding: 0px 24px;
   column-gap: 12px;
 }
 
-.closeButton {
+.roundedButton {
+  min-height: 56px;
   padding: 20px;
 }
 
-:hover.button {
+:hover.activeButton {
   background-color: #97ab0d;
 }
 
-:active.button {
+:active.activeButton {
   background-color: #819400;
 }
 
