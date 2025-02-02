@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import entryIcon from "./../assets/next.svg";
 import closeIcon from "./../assets/close.svg";
+import userIcon from "./../assets/user.svg";
+import plusIcon from "./../assets/user.svg";
 defineProps<{ variant: string; disabled?: boolean; icon: string }>();
 
 const buttonClass = (disabled: boolean | undefined) => {
@@ -47,6 +49,20 @@ const buttonClass = (disabled: boolean | undefined) => {
       :src="closeIcon"
       alt="close button"
     />
+    <img
+      v-else-if="icon === 'user'"
+      width="20"
+      height="28"
+      :src="userIcon"
+      alt="close button"
+    />
+    <img
+      v-else-if="icon === 'plus'"
+      width="16"
+      height="16"
+      :src="plusIcon"
+      alt="close button"
+    />
   </button>
 </template>
 
@@ -70,8 +86,8 @@ const buttonClass = (disabled: boolean | undefined) => {
 }
 
 .roundedButton {
+  min-width: 56px;
   min-height: 56px;
-  padding: 20px;
 }
 
 :hover.activeButton {
