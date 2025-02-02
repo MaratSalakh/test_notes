@@ -1,9 +1,12 @@
 body {
+  --bg-color: #0a1f38;
   color: white;
+  background-color: var(--bg-color);
   font-family: "Montserrat", serif;
 }
 
 h1 {
+  margin: 0;
   font-family: Montserrat;
   font-size: 104px;
   font-weight: 900;
@@ -14,6 +17,7 @@ h1 {
 }
 
 h2 {
+  margin: 0;
   font-family: Montserrat;
   font-size: 48px;
   font-weight: 600;
@@ -24,6 +28,7 @@ h2 {
 }
 
 h3 {
+  margin: 0;
   font-family: Montserrat;
   font-size: 32px;
   font-weight: 400;
@@ -34,6 +39,7 @@ h3 {
 }
 
 h4 {
+  margin: 0;
   font-family: Montserrat;
   font-size: 24px;
   font-weight: 600;
